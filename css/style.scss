@@ -12,5 +12,15 @@ body {
     &:hover {
       color: $red;
   }
+
+  .cocktailList {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    .cocktail {
+      width: 200px;
+      margin-bottom: 20px;
+    }
+  }
 }
 }
