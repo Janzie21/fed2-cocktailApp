@@ -3,6 +3,7 @@ class Formulier {
         this.holder = holder;
         this.data = data;
         this.formEl = this.start();
+        this.getCocktails = new CustomEvent('getCocktails');
         this.setUpEvents();
         
     }
@@ -23,20 +24,21 @@ class Formulier {
     }
 
    setUpEvents(){
-       this.formEl.addEventListener('submit', this.getData.bind(this))
+       this.formEl.addEventListener('submit', this.getData);
    }
 
-   getData(e){
+   getData = (e) => {
        e.preventDefault();
        const searchVal = this.formEl.querySelector('#searchString').value;
        fetch('https://www.thecocktaildb.com/api/json/v1/1/search.php?s=' + searchVal)
-       .then(response => response.json)
-       .then(data => {
-           this.data.cocktails = data.results;
-           console.log(this.data);
+       .then(response => response.json())
+       .then((data) => {
+           this.data.cocktails = data.drinks;
+           console.log(this.data)
+           dispatchEvent(this.getCocktails);
        })
-       .catch(console.log())
-   }
+       .catch(console.log(`Cocktail doesn't exist!`));
+   };
 }
 
 export default Formulier;

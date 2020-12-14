@@ -5,6 +5,7 @@ class Cocktails {
         this.holder = holder;
         this.data = data;
         this.gridElement = this.start();
+        this.renderCocktails();
     }
 
     start(){
@@ -17,15 +18,18 @@ class Cocktails {
         `);
         return this.holder.querySelector('.cocktailList')
     }
-    renderCocktails(){
-        if(this.data.cocktails.length > 0){
-        this.data.cocktails.forEach(cocktail => {
-            new Cocktail(this.gridElement, cocktail)
-              });}
-        else {this.gridElement.innerHTML = "No cocktails selected";
-    }
-}
 
-}
+    renderCocktails = () => {
+        this.gridElement.innerHTML = "";
+        if(this.data.cocktails.length > 0) {
+            this.data.cocktails.forEach((cocktail) => {
+            new Cocktail(this.gridElement, cocktail);
+              });
+            }
+        else {
+            this.gridElement.innerHTML = "No cocktails selected";
+            }
+        }
+    }
 
 export default Cocktails;

@@ -11,7 +11,7 @@ class Header {
         <header>
         <h1>${this.cocktailAppName} | ${this.description}<h1>
         </header>
-        `)
+        `);
     }
 }
 

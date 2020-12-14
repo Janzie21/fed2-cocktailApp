@@ -6,15 +6,17 @@ import Cocktails from './Cocktails';
 const data = {
     cocktails: [],
     cocktailDetail: {}
-}
+};
+
+
 
 new Header(document.body, 'Better drunk then sober', 'A place to look up all your favourite cocktails');
 
+new Formulier(document.body, data);
+
 const cocktails = new Cocktails(document.body, data);
 
-new Formulier(document.body, data);
-setInterval(function(){
-    cocktails.renderCocktails()
-},1000)
+window.addEventListener('getCocktails', cocktails.renderCocktails);
+
 new Footer(document.body);
 
